@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÉcoChoice - Compare Digital Habits</title>
+    <title>ÉcoChoice - Comparez vos habitudes numériques</title>
     <style>
         :root {
-            --dark-green: #286232;
-            --light-green: #50984f;
-            --pink: #ffc1e7;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --card-bg: #fff;
-            --correct-color: #50984f;
-            --incorrect-color: #f44336;
+            --vert-fonce: #286232;
+            --vert-clair: #50984f;
+            --rose: #ffc1e7;
+            --couleur-fond: #f8f9fa;
+            --couleur-texte: #333;
+            --couleur-fond-carte: #fff;
+            --couleur-correcte: #50984f;
+            --couleur-incorrecte: #f44336;
         }
 
         * {
@@ -24,13 +24,13 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--couleur-fond);
+            color: var(--couleur-texte);
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(135deg, var(--vert-fonce), var(--vert-clair));
             color: white;
             padding: 1rem;
             text-align: center;
@@ -65,7 +65,7 @@
         }
 
         .eco-logo span {
-            color: var(--pink);
+            color: var(--rose);
         }
 
         .score-container {
@@ -77,7 +77,7 @@
         }
 
         .leaf-icon {
-            color: var(--pink);
+            color: var(--rose);
             margin-right: 5px;
         }
 
@@ -102,7 +102,7 @@
         .option {
             flex: 1;
             min-width: 300px;
-            background-color: var(--card-bg);
+            background-color: var(--couleur-fond-carte);
             border-radius: 10px;
             padding: 1.5rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -123,7 +123,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(90deg, var(--vert-fonce), var(--vert-clair));
             border-radius: 10px 10px 0 0;
         }
 
@@ -142,13 +142,13 @@
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             font-size: 1.5rem;
         }
 
         .option-title {
             font-size: 1.2rem;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
         }
 
         .option-image {
@@ -160,7 +160,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             font-size: 3rem;
             position: relative;
             overflow: hidden;
@@ -178,11 +178,11 @@
 
         .option-description {
             margin-bottom: 1.5rem;
-            color: var(--text-color);
+            color: var(--couleur-texte);
         }
 
         .btn {
-            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(135deg, var(--vert-fonce), var(--vert-clair));
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -208,18 +208,18 @@
             margin-top: 1.5rem;
             padding: 1rem;
             border-radius: 8px;
-            background-color: var(--light-green);
+            background-color: var(--vert-clair);
             color: white;
             display: none;
             animation: fadeIn 0.5s ease;
         }
 
         .feedback.correct {
-            background-color: var(--correct-color);
+            background-color: var(--couleur-correcte);
         }
 
         .feedback.incorrect {
-            background-color: var(--incorrect-color);
+            background-color: var(--couleur-incorrecte);
         }
 
         .feedback-title {
@@ -236,10 +236,10 @@
 
         .comparison-title {
             font-size: 1.5rem;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light-green);
+            border-bottom: 2px solid var(--vert-clair);
             position: relative;
         }
 
@@ -250,11 +250,11 @@
             bottom: -2px;
             width: 60px;
             height: 2px;
-            background-color: var(--pink);
+            background-color: var(--rose);
         }
 
         .next-button {
-            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(135deg, var(--vert-fonce), var(--vert-clair));
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -270,14 +270,14 @@
         }
 
         .next-button:hover {
-            background: linear-gradient(135deg, var(--light-green), var(--dark-green));
+            background: linear-gradient(135deg, var(--vert-clair), var(--vert-fonce));
             box-shadow: 0 4px 10px rgba(40, 98, 50, 0.3);
         }
 
         .falling-leaf {
             position: absolute;
             font-size: 20px;
-            color: var(--light-green);
+            color: var(--vert-clair);
             animation: fallingSpin 5s linear;
             z-index: 10;
         }
@@ -312,16 +312,16 @@
 
         .education-section {
             margin-top: 4rem;
-            background-color: var(--card-bg);
+            background-color: var(--couleur-fond-carte);
             border-radius: 10px;
             padding: 2rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .education-section h2 {
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--light-green);
+            border-bottom: 2px solid var(--vert-clair);
             padding-bottom: 0.5rem;
         }
 
@@ -336,25 +336,25 @@
             background-color: rgba(80, 152, 79, 0.1);
             border-radius: 8px;
             padding: 1.5rem;
-            border-left: 4px solid var(--dark-green);
+            border-left: 4px solid var(--vert-fonce);
         }
 
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             margin-bottom: 0.5rem;
         }
 
         .stat-title {
             font-weight: bold;
             margin-bottom: 0.5rem;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
         }
 
         .stat-description {
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: var(--couleur-texte);
         }
 
         .tips-list {
@@ -375,7 +375,7 @@
         }
 
         footer {
-            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(135deg, var(--vert-fonce), var(--vert-clair));
             color: white;
             text-align: center;
             padding: 2rem 1rem;
@@ -400,7 +400,7 @@
 
         .nav-btn {
             background-color: rgba(255, 193, 231, 0.3);
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -409,13 +409,13 @@
         }
 
         .nav-btn:hover {
-            background-color: var(--pink);
-            color: var(--dark-green);
+            background-color: var(--rose);
+            color: var(--vert-fonce);
         }
 
         .nav-btn.active {
-            background-color: var(--pink);
-            color: var(--dark-green);
+            background-color: var(--rose);
+            color: var(--vert-fonce);
             font-weight: bold;
         }
 
@@ -430,14 +430,14 @@
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(90deg, var(--vert-fonce), var(--vert-clair));
             width: 0%;
             transition: width 0.5s ease;
         }
 
-        /* Results screen styles */
+        /* Styles pour l'écran des résultats */
         .results-container {
-            background-color: var(--card-bg);
+            background-color: var(--couleur-fond-carte);
             border-radius: 10px;
             padding: 2rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -453,14 +453,14 @@
 
         .results-title {
             font-size: 2rem;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             margin-bottom: 1rem;
         }
 
         .results-score {
             font-size: 4rem;
             font-weight: bold;
-            color: var(--dark-green);
+            color: var(--vert-fonce);
             margin: 1rem 0;
         }
 
@@ -489,7 +489,7 @@
         }
 
         .results-btn {
-            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            background: linear-gradient(135deg, var(--vert-fonce), var(--vert-clair));
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -502,11 +502,11 @@
 
         .results-btn.secondary {
             background: transparent;
-            border: 2px solid var(--light-green);
-            color: var(--dark-green);
+            border: 2px solid var(--vert-clair);
+            color: var(--vert-fonce);
         }
 
-        /* Mobile Responsive Design */
+        /* Responsive Design pour Mobile */
         @media (max-width: 768px) {
             .comparison {
                 flex-direction: column;
@@ -534,17 +534,17 @@
 <header>
     <div class="header-content">
         <h1 class="eco-logo">Éco<span>Choice</span></h1>
-        <p>Make sustainable digital choices for a greener future</p>
+        <p>Faites des choix numériques durables pour un avenir plus vert</p>
         <div class="score-container">
-            <span class="leaf-icon">🍃</span> Eco Score: <span id="eco-score">0</span> points
+            <span class="leaf-icon">🍃</span> Eco Score : <span id="eco-score">0</span> points
         </div>
     </div>
 </header>
 
 <main>
     <div id="navigation">
-        <button class="nav-btn active" data-page="comparisons">Digital Choices</button>
-        <button class="nav-btn" data-page="education">Learn More</button>
+        <button class="nav-btn active" data-page="comparisons">Choix Numériques</button>
+        <button class="nav-btn" data-page="education">En savoir plus</button>
     </div>
 
     <div id="comparisons-page">
@@ -552,69 +552,69 @@
             <div class="progress-bar" id="progress-bar"></div>
         </div>
         <div class="comparison-container" id="comparisons">
-            <!-- Comparison sections will be added here via JavaScript -->
+            <!-- Les sections de comparaison seront ajoutées ici via JavaScript -->
         </div>
-        <button id="next-button" class="next-button">Next Question</button>
+        <button id="next-button" class="next-button">Question Suivante</button>
 
-        <!-- Results screen (new) -->
+        <!-- Écran des résultats (nouveau) -->
         <div id="results-container" class="results-container">
             <div class="results-header">
-                <h2 class="results-title">Quiz Complete!</h2>
-                <p>Thank you for making eco-friendly digital choices</p>
+                <h2 class="results-title">Quiz Terminé !</h2>
+                <p>Merci de faire des choix numériques écologiques</p>
             </div>
             <div class="results-badge" id="results-badge">🍃</div>
             <div class="results-score">
                 <span id="final-score">0</span> points
             </div>
             <div class="results-message" id="results-message">
-                <!-- Message will be set dynamically based on score -->
+                <!-- Le message sera défini dynamiquement en fonction du score -->
             </div>
             <div class="results-actions">
-                <button id="restart-quiz" class="results-btn">Try Again</button>
-                <button id="learn-more-btn" class="results-btn secondary">Learn More</button>
+                <button id="restart-quiz" class="results-btn">Réessayer</button>
+                <button id="learn-more-btn" class="results-btn secondary">En savoir plus</button>
             </div>
         </div>
     </div>
 
     <div id="education-page" class="hidden">
         <div class="education-section">
-            <h2>Digital Ecology Impact</h2>
+            <h2>Impact Écologique du Numérique</h2>
             <div class="stat-grid">
                 <div class="stat-card">
                     <div class="stat-number">200 TWh</div>
-                    <div class="stat-title">Data Centers Energy Use</div>
-                    <div class="stat-description">Global data centers use approximately 200 terawatt-hours of electricity annually, equivalent to the energy consumption of some countries.</div>
+                    <div class="stat-title">Consommation Énergétique des Centres de Données</div>
+                    <div class="stat-description">Les centres de données mondiaux consomment environ 200 térawattheures d'électricité par an, soit l'équivalent de la consommation énergétique de certains pays.</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-number">80-85%</div>
-                    <div class="stat-title">Device Carbon Footprint</div>
-                    <div class="stat-description">80-85% of a smartphone's carbon footprint comes from manufacturing, not usage, highlighting the importance of extending device lifespans.</div>
+                    <div class="stat-title">Empreinte Carbone des Appareils</div>
+                    <div class="stat-description">80-85% de l'empreinte carbone d'un smartphone provient de sa fabrication, et non de son utilisation, soulignant l'importance de prolonger la durée de vie des appareils.</div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-number">50+ million</div>
-                    <div class="stat-title">E-Waste Generated</div>
-                    <div class="stat-description">Over 50 million tons of electronic waste is generated globally each year, with only about 20% being properly recycled.</div>
+                    <div class="stat-number">50+ millions</div>
+                    <div class="stat-title">Déchets Électroniques Générés</div>
+                    <div class="stat-description">Plus de 50 millions de tonnes de déchets électroniques sont générées chaque année dans le monde, dont seulement environ 20% sont correctement recyclées.</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-number">4%</div>
-                    <div class="stat-title">Global CO₂ Emissions</div>
-                    <div class="stat-description">The IT sector is responsible for approximately 4% of global CO₂ emissions, comparable to the airline industry.</div>
+                    <div class="stat-title">Émissions Mondiales de CO₂</div>
+                    <div class="stat-description">Le secteur des technologies de l'information est responsable d'environ 4% des émissions mondiales de CO₂, comparable à l'industrie aéronautique.</div>
                 </div>
             </div>
 
-            <h2>Sustainable Digital Habits</h2>
+            <h2>Habitudes Numériques Durables</h2>
             <ul class="tips-list">
-                <li><strong>Extend device lifespan:</strong> Keep your devices for at least 3-4 years before upgrading to reduce manufacturing impacts.</li>
-                <li><strong>Reduce streaming quality:</strong> Lower video resolution when possible, as streaming accounts for more than 60% of global internet traffic.</li>
-                <li><strong>Clean your digital footprint:</strong> Delete unnecessary emails, photos, and files from cloud storage to reduce server energy usage.</li>
-                <li><strong>Use Wi-Fi over cellular:</strong> Wi-Fi connections typically use less energy than cellular data connections.</li>
-                <li><strong>Proper e-waste disposal:</strong> Always recycle electronics through certified e-waste recyclers to prevent toxic materials from entering landfills.</li>
-                <li><strong>Disable autoplay:</strong> Turn off autoplay features on streaming services to avoid unnecessary data consumption.</li>
-                <li><strong>Dark mode:</strong> Using dark mode on OLED screens can reduce power consumption by up to 30%.</li>
-                <li><strong>Eco-friendly search engines:</strong> Consider using search engines that invest in carbon offset projects.</li>
+                <li><strong>Prolongez la durée de vie de vos appareils :</strong> Gardez vos appareils pendant au moins 3-4 ans avant de les remplacer pour réduire l'impact de la fabrication.</li>
+                <li><strong>Réduisez la qualité de streaming :</strong> Réduisez la résolution vidéo lorsque c'est possible, car le streaming représente plus de 60% du trafic internet mondial.</li>
+                <li><strong>Nettoyez votre empreinte numérique :</strong> Supprimez les e-mails, photos et fichiers inutiles du stockage cloud pour réduire l'utilisation d'énergie des serveurs.</li>
+                <li><strong>Utilisez le Wi-Fi plutôt que la 4G :</strong> Les connexions Wi-Fi consomment généralement moins d'énergie que les connexions de données cellulaires.</li>
+                <li><strong>Recyclage approprié des déchets électroniques :</strong> Recyclez toujours les appareils électroniques via des recycleurs certifiés pour éviter que des matériaux toxiques ne finissent dans les décharges.</li>
+                <li><strong>Désactivez la lecture automatique :</strong> Désactivez les fonctionnalités de lecture automatique sur les services de streaming pour éviter une consommation inutile de données.</li>
+                <li><strong>Mode sombre :</strong> L'utilisation du mode sombre sur les écrans OLED peut réduire la consommation d'énergie jusqu'à 30%.</li>
+                <li><strong>Moteurs de recherche écologiques :</strong> Utilisez des moteurs de recherche qui investissent dans des projets de compensation carbone.</li>
             </ul>
         </div>
     </div>
@@ -622,414 +622,413 @@
 
 <footer>
     <div class="footer-content">
-        <p>&copy; 2025 ÉcoChoice | Raising awareness about digital environmental impact</p>
-        <p>Make every digital choice count for our planet</p>
+        <p>&copy; 2025 ÉcoChoice | Sensibilisation à l'impact environnemental du numérique</p>
+        <p>Faites en sorte que chaque choix numérique compte pour notre planète</p>
     </div>
 </footer>
 
 <script>
-    // Data for comparisons
+    // Données pour les comparaisons
     const comparisons = [
         {
             id: 1,
-            title: "Sharing Files",
+            title: "Partage de Fichiers",
             options: [
                 {
-                    title: "Send 1MB Email Attachment",
+                    title: "Envoyer une Pièce Jointe de 1MB par Email",
                     icon: "📧",
                     image: "📁",
-                    description: "Sending files directly as email attachments to multiple recipients.",
+                    description: "Envoyer des fichiers directement en pièces jointes à plusieurs destinataires.",
                     eco: false,
-                    feedback: "Email attachments are stored multiple times across servers and in each recipient's inbox, consuming more storage space and energy."
+                    feedback: "Les pièces jointes par email sont stockées plusieurs fois sur les serveurs et dans la boîte de réception de chaque destinataire, consommant ainsi plus d'espace de stockage et d'énergie."
                 },
                 {
-                    title: "Share Download Link",
+                    title: "Partager un Lien de Téléchargement",
                     icon: "🔗",
                     image: "🌐",
-                    description: "Sharing a link to download the file from a single source.",
+                    description: "Partager un lien pour télécharger le fichier depuis une source unique.",
                     eco: true,
-                    feedback: "Using download links stores the file once and allows multiple people to access it, reducing server storage needs and energy consumption."
+                    feedback: "L'utilisation de liens de téléchargement stocke le fichier une seule fois et permet à plusieurs personnes d'y accéder, réduisant ainsi les besoins en stockage des serveurs et la consommation d'énergie."
                 }
             ]
         },
         {
             id: 2,
-            title: "Video Streaming",
+            title: "Streaming Vidéo",
             options: [
                 {
-                    title: "Stream in 4K Resolution",
+                    title: "Streaming en Résolution 4K",
                     icon: "🎬",
                     image: "📺",
-                    description: "Watching videos in ultra-high 4K resolution.",
+                    description: "Regarder des vidéos en ultra-haute résolution 4K.",
                     eco: false,
-                    feedback: "4K streaming uses approximately 4 times more data than HD, requiring more bandwidth and server energy to deliver."
+                    feedback: "Le streaming 4K utilise environ 4 fois plus de données que la HD, nécessitant plus de bande passante et d'énergie serveur pour la diffusion."
                 },
                 {
-                    title: "Watch in HD Resolution",
+                    title: "Regarder en Résolution HD",
                     icon: "🎥",
                     image: "🖥️",
-                    description: "Watching videos in standard HD (1080p) resolution.",
+                    description: "Regarder des vidéos en résolution HD standard (1080p).",
                     eco: true,
-                    feedback: "HD streaming provides good quality while using significantly less data and energy compared to 4K resolution."
+                    feedback: "Le streaming HD offre une bonne qualité tout en utilisant beaucoup moins de données et d'énergie par rapport à la résolution 4K."
                 }
             ]
         },
         {
             id: 3,
-            title: "Device Lifecycle",
+            title: "Cycle de Vie des Appareils",
             options: [
                 {
-                    title: "Upgrade Annually",
+                    title: "Mise à Jour Annuelle",
                     icon: "📱",
                     image: "🔄",
-                    description: "Replacing your smartphone with the newest model every year.",
+                    description: "Remplacer votre smartphone par le dernier modèle chaque année.",
                     eco: false,
-                    feedback: "Manufacturing new devices is resource-intensive. Up to 85% of a smartphone's carbon footprint comes from production, not usage."
+                    feedback: "La fabrication de nouveaux appareils est intensive en ressources. Jusqu'à 85% de l'empreinte carbone d'un smartphone provient de sa production, et non de son utilisation."
                 },
                 {
-                    title: "Keep for 3+ Years",
+                    title: "Garder 3+ Ans",
                     icon: "⏳",
                     image: "🛠️",
-                    description: "Using your smartphone for at least 3 years before upgrading.",
+                    description: "Utiliser votre smartphone pendant au moins 3 ans avant de le remplacer.",
                     eco: true,
-                    feedback: "Extending device lifespan to 3+ years significantly reduces manufacturing impacts and e-waste generation."
+                    feedback: "Prolonger la durée de vie des appareils à 3+ ans réduit considérablement l'impact de la fabrication et la génération de déchets électroniques."
                 }
             ]
         },
         {
             id: 4,
-            title: "Data Storage",
+            title: "Stockage de Données",
             options: [
                 {
-                    title: "Use Cloud Storage",
+                    title: "Utiliser le Stockage Cloud",
                     icon: "☁️",
                     image: "📤",
-                    description: "Storing all your files in cloud-based services.",
+                    description: "Stocker tous vos fichiers dans des services basés sur le cloud.",
                     eco: false,
-                    feedback: "Cloud storage requires constant server operation and energy consumption, especially for frequently accessed files."
+                    feedback: "Le stockage cloud nécessite un fonctionnement constant des serveurs et une consommation d'énergie, en particulier pour les fichiers fréquemment accédés."
                 },
                 {
-                    title: "Use External Hard Drive",
+                    title: "Utiliser un Disque Dur Externe",
                     icon: "💾",
                     image: "📥",
-                    description: "Storing files locally on an external storage device.",
+                    description: "Stocker les fichiers localement sur un dispositif de stockage externe.",
                     eco: true,
-                    feedback: "Local storage consumes energy only when in use, rather than requiring constant server operation and internet connectivity."
+                    feedback: "Le stockage local ne consomme de l'énergie que lorsqu'il est utilisé, plutôt que de nécessiter un fonctionnement constant des serveurs et une connectivité internet."
                 }
             ]
         },
         {
             id: 5,
-            title: "Power Management",
+            title: "Gestion de l'Alimentation",
             options: [
                 {
-                    title: "Leave Devices on Standby",
+                    title: "Laisser les Appareils en Veille",
                     icon: "💤",
                     image: "⏰",
-                    description: "Keeping devices in sleep or standby mode when not in use.",
+                    description: "Garder les appareils en mode veille ou standby lorsqu'ils ne sont pas utilisés.",
                     eco: false,
-                    feedback: "Standby power can account for 5-10% of household electricity use, as devices continue to draw power even when not actively used."
+                    feedback: "La consommation en veille peut représenter 5-10% de la consommation électrique d'un foyer, car les appareils continuent de consommer de l'énergie même lorsqu'ils ne sont pas activement utilisés."
                 },
                 {
-                    title: "Fully Power Off",
+                    title: "Éteindre Complètement",
                     icon: "⚡",
                     image: "🔌",
-                    description: "Completely shutting down devices when not in use.",
+                    description: "Éteindre complètement les appareils lorsqu'ils ne sont pas utilisés.",
                     eco: true,
-                    feedback: "Powering off devices completely eliminates standby power consumption and can save significant energy over time."
+                    feedback: "Éteindre complètement les appareils élimine la consommation d'énergie en veille et peut économiser une quantité significative d'énergie au fil du temps."
                 }
             ]
         },
         {
             id: 6,
-            title: "Document Management",
+            title: "Gestion des Documents",
             options: [
                 {
-                    title: "Printed Documents",
+                    title: "Documents Imprimés",
                     icon: "🖨️",
                     image: "📄",
-                    description: "Printing physical copies of documents for reading and storage.",
+                    description: "Imprimer des copies physiques de documents pour la lecture et le stockage.",
                     eco: false,
-                    feedback: "Paper production, printing, and physical storage all have environmental impacts, including deforestation and chemical usage."
+                    feedback: "La production de papier, l'impression et le stockage physique ont tous des impacts environnementaux, y compris la déforestation et l'utilisation de produits chimiques."
                 },
                 {
-                    title: "Digital Documents",
+                    title: "Documents Numériques",
                     icon: "📱",
                     image: "💻",
-                    description: "Reading and storing documents in digital format.",
+                    description: "Lire et stocker des documents sous forme numérique.",
                     eco: true,
-                    feedback: "Digital documents eliminate paper use and the associated environmental impacts of printing and physical storage."
+                    feedback: "Les documents numériques éliminent l'utilisation de papier et les impacts environnementaux associés à l'impression et au stockage physique."
                 }
             ]
         },
         {
             id: 7,
-            title: "Internet Browsing",
+            title: "Navigation Internet",
             options: [
                 {
-                    title: "Use Heavy Websites with Large Images",
+                    title: "Utiliser des Sites Web Lourds avec de Grandes Images",
                     icon: "🌐",
                     image: "🖼️",
-                    description: "Browsing websites with high-resolution images and complex media elements.",
+                    description: "Naviguer sur des sites web avec des images haute résolution et des éléments média complexes.",
                     eco: false,
-                    feedback: "Heavy websites consume more data and require more energy from data centers and devices to load and render content."
+                    feedback: "Les sites web lourds consomment plus de données et nécessitent plus d'énergie des centres de données et des appareils pour charger et afficher le contenu."
                 },
                 {
-                    title: "Browse Optimized Websites with Smaller Images",
+                    title: "Naviguer sur des Sites Web Optimisés avec des Images Plus Petites",
                     icon: "🖥️",
                     image: "📉",
-                    description: "Browsing websites designed for speed, with optimized content and smaller images.",
+                    description: "Naviguer sur des sites web conçus pour la rapidité, avec un contenu optimisé et des images plus petites.",
                     eco: true,
-                    feedback: "Optimized websites reduce the amount of data transferred, leading to lower energy consumption for both the server and your device."
+                    feedback: "Les sites web optimisés réduisent la quantité de données transférées, entraînant une consommation d'énergie plus faible pour le serveur et votre appareil."
                 }
             ]
         },
         {
             id: 8,
-            title: "Video Conferencing",
+            title: "Visioconférence",
             options: [
                 {
-                    title: "Use Video with High Resolution",
+                    title: "Utiliser la Vidéo en Haute Résolution",
                     icon: "📹",
                     image: "💻",
-                    description: "Participating in video calls with high-definition video resolution.",
+                    description: "Participer à des appels vidéo avec une résolution vidéo haute définition.",
                     eco: false,
-                    feedback: "High-definition video calls consume more data, increasing the energy usage of the servers and devices involved."
+                    feedback: "Les appels vidéo haute définition consomment plus de données, augmentant la consommation d'énergie des serveurs et des appareils impliqués."
                 },
                 {
-                    title: "Use Audio Only",
+                    title: "Utiliser Seulement l'Audio",
                     icon: "🎙️",
                     image: "🎧",
-                    description: "Opting for audio-only calls instead of using video.",
+                    description: "Opter pour des appels audio uniquement au lieu d'utiliser la vidéo.",
                     eco: true,
-                    feedback: "Audio-only calls significantly reduce data usage and server load, leading to lower energy consumption."
+                    feedback: "Les appels audio uniquement réduisent considérablement la consommation de données et la charge du serveur, entraînant une consommation d'énergie plus faible."
                 }
             ]
         },
         {
             id: 9,
-            title: "Streaming Music",
+            title: "Streaming Musical",
             options: [
                 {
-                    title: "Stream Music in Lossless Quality",
+                    title: "Streaming Musical en Qualité Sans Pertes",
                     icon: "🎶",
                     image: "🎧",
-                    description: "Streaming music in high-quality lossless audio formats.",
+                    description: "Écouter de la musique en formats audio sans perte de haute qualité.",
                     eco: false,
-                    feedback: "Lossless music formats use significantly more data than compressed audio formats, which increases the energy used during streaming."
+                    feedback: "Les formats audio sans perte utilisent beaucoup plus de données que les formats compressés, augmentant l'énergie utilisée pendant le streaming."
                 },
                 {
-                    title: "Stream Music in Compressed Quality",
+                    title: "Streaming Musical en Qualité Compressée",
                     icon: "🎵",
                     image: "📱",
-                    description: "Streaming music in compressed audio formats such as MP3.",
+                    description: "Écouter de la musique en formats audio compressés tels que MP3.",
                     eco: true,
-                    feedback: "Compressed formats use less data, reducing the amount of bandwidth required and the energy consumed during streaming."
+                    feedback: "Les formats compressés utilisent moins de données, réduisant la bande passante requise et l'énergie consommée pendant le streaming."
                 }
             ]
         },
         {
             id: 10,
-            title: "Social Media Use",
+            title: "Utilisation des Réseaux Sociaux",
             options: [
                 {
-                    title: "Post with High-Quality Photos and Videos",
+                    title: "Publier avec des Photos et Vidéos de Haute Qualité",
                     icon: "📸",
                     image: "📱",
-                    description: "Posting content with high-resolution images and videos on social media.",
+                    description: "Publier du contenu avec des images et vidéos haute résolution sur les réseaux sociaux.",
                     eco: false,
-                    feedback: "High-quality images and videos require larger file sizes, leading to more data consumption and higher energy usage during upload and viewing."
+                    feedback: "Les images et vidéos de haute qualité nécessitent des tailles de fichier plus grandes, entraînant une consommation de données plus élevée et une utilisation accrue d'énergie lors du téléchargement et de la visualisation."
                 },
                 {
-                    title: "Post with Low-Resolution Content",
+                    title: "Publier avec du Contenu de Faible Résolution",
                     icon: "🖼️",
                     image: "💬",
-                    description: "Sharing content with smaller images or text-based posts.",
+                    description: "Partager du contenu avec des images plus petites ou des publications basées sur du texte.",
                     eco: true,
-                    feedback: "Lower-resolution posts use less data and require less energy for upload, processing, and viewing, reducing the environmental impact."
+                    feedback: "Les publications de faible résolution utilisent moins de données et nécessitent moins d'énergie pour le téléchargement, le traitement et la visualisation, réduisant ainsi l'impact environnemental."
                 }
             ]
         },
         {
             id: 7,
-            title: "Video Conferencing",
+            title: "Visioconférence",
             options: [
                 {
-                    title: "Video-on Meetings",
+                    title: "Vidéo Activée en Réunions",
                     icon: "🎥",
                     image: "👨‍💻",
-                    description: "Always keeping video on during online meetings and calls.",
+                    description: "Garder toujours la vidéo activée lors des réunions et appels en ligne.",
                     eco: false,
-                    feedback: "Video streaming in meetings can use up to 2.5GB per hour, increasing data center energy consumption and carbon emissions."
+                    feedback: "Le streaming vidéo en réunions peut utiliser jusqu'à 2,5GB par heure, augmentant la consommation d'énergie des centres de données et les émissions de carbone."
                 },
                 {
-                    title: "Audio-only When Possible",
+                    title: "Audio Seulement Quand Possible",
                     icon: "🎧",
                     image: "🔊",
-                    description: "Using audio-only mode when video isn't necessary.",
+                    description: "Utiliser le mode audio uniquement lorsque la vidéo n'est pas nécessaire.",
                     eco: true,
-                    feedback: "Audio-only calls use about 90% less data than video calls, significantly reducing energy consumption and carbon footprint."
+                    feedback: "Les appels audio utilisent environ 90% de données en moins que les appels vidéo, réduisant considérablement la consommation d'énergie et l'empreinte carbone."
                 }
             ]
         },
         {
             id: 8,
-            title: "Web Browsing",
+            title: "Navigation Web",
             options: [
                 {
-                    title: "Multiple Tabs Always Open",
+                    title: "Plusieurs Onglets Toujours Ouverts",
                     icon: "🔄",
                     image: "📊",
-                    description: "Keeping dozens of browser tabs open continuously.",
+                    description: "Garder des dizaines d'onglets de navigateur ouverts en continu.",
                     eco: false,
-                    feedback: "Each active tab consumes memory and processing power, increasing device energy consumption by up to 20% compared to efficient browsing."
+                    feedback: "Chaque onglet actif consomme de la mémoire et de la puissance de traitement, augmentant la consommation d'énergie de l'appareil jusqu'à 20% par rapport à une navigation efficace."
                 },
                 {
-                    title: "Close Unused Tabs",
+                    title: "Fermer les Onglets Inutilisés",
                     icon: "✖️",
                     image: "📱",
-                    description: "Closing tabs when finished and using bookmarks instead.",
+                    description: "Fermer les onglets lorsque vous avez terminé et utiliser les favoris à la place.",
                     eco: true,
-                    feedback: "Closing unused tabs reduces RAM usage, CPU load, and extends battery life, reducing overall energy consumption."
+                    feedback: "Fermer les onglets inutilisés réduit l'utilisation de la RAM, la charge du CPU et prolonge la durée de vie de la batterie, réduisant ainsi la consommation globale d'énergie."
                 }
             ]
         },
         {
             id: 9,
-            title: "Software Updates",
+            title: "Mises à Jour Logicielles",
             options: [
                 {
-                    title: "Always Update Everything",
+                    title: "Toujours Mettre à Jour Tout",
                     icon: "🔄",
                     image: "⬆️",
-                    description: "Installing all software updates immediately across all applications.",
+                    description: "Installer immédiatement toutes les mises à jour logicielles sur toutes les applications.",
                     eco: false,
-                    feedback: "Constant software updates can prematurely obsolete hardware that can't handle newer versions, contributing to e-waste."
+                    feedback: "Les mises à jour logicielles constantes peuvent rendre le matériel obsolète plus rapidement, contribuant aux déchets électroniques."
                 },
                 {
-                    title: "Selective Security Updates",
+                    title: "Mises à Jour de Sécurité Sélectives",
                     icon: "🔒",
                     image: "🛡️",
-                    description: "Installing security updates while being selective about feature updates.",
+                    description: "Installer les mises à jour de sécurité tout en étant sélectif sur les mises à jour de fonctionnalités.",
                     eco: true,
-                    feedback: "Prioritizing security updates while limiting unnecessary feature updates extends device compatibility and reduces forced obsolescence."
+                    feedback: "Prioriser les mises à jour de sécurité tout en limitant les mises à jour de fonctionnalités inutiles prolonge la compatibilité des appareils et réduit l'obsolescence forcée."
                 }
             ]
         },
         {
             id: 10,
-            title: "Internet Searches",
+            title: "Recherches Internet",
             options: [
                 {
-                    title: "Multiple Search Queries",
+                    title: "Requêtes de Recherche Multiples",
                     icon: "🔍",
                     image: "❓",
-                    description: "Making multiple vague searches for the same information.",
+                    description: "Effectuer plusieurs recherches vagues pour la même information.",
                     eco: false,
-                    feedback: "Each search emits about 0.2g CO2e. Multiple searches for the same information unnecessarily multiply this impact."
+                    feedback: "Chaque recherche émet environ 0,2g de CO2e. Des recherches multiples pour la même information multiplient inutilement cet impact."
                 },
                 {
-                    title: "Targeted Specific Searches",
+                    title: "Recherches Spécifiques Ciblées",
                     icon: "🎯",
                     image: "📝",
-                    description: "Using specific search terms to find information in fewer attempts.",
+                    description: "Utiliser des termes de recherche spécifiques pour trouver des informations en moins d'essais.",
                     eco: true,
-                    feedback: "Well-formulated searches reduce the number of queries needed, minimizing data center processing and associated emissions."
+                    feedback: "Des recherches bien formulées réduisent le nombre de requêtes nécessaires, minimisant le traitement des centres de données et les émissions associées."
                 }
             ]
         },
         {
             id: 11,
-            title: "Smart Home Devices",
+            title: "Appareils Domotiques",
             options: [
                 {
-                    title: "Always-on Voice Assistants",
+                    title: "Assistants Vocaux Toujours en Écoute",
                     icon: "🔊",
                     image: "🏠",
-                    description: "Using multiple always-listening smart speakers throughout your home.",
+                    description: "Utiliser plusieurs enceintes intelligentes toujours à l'écoute dans toute la maison.",
                     eco: false,
-                    feedback: "Always-on devices consume 'phantom power' and continuously send data to cloud servers, consuming energy even when not actively used."
+                    feedback: "Les appareils toujours en écoute consomment de l'énergie fantôme et envoient constamment des données aux serveurs cloud, consommant de l'énergie même lorsqu'ils ne sont pas activement utilisés."
                 },
                 {
-                    title: "On-Demand Activation",
+                    title: "Activation à la Demande",
                     icon: "👆",
                     image: "⏯️",
-                    description: "Using manual activation or scheduling for smart home functions.",
+                    description: "Utiliser une activation manuelle ou une planification pour les fonctions domotiques.",
                     eco: true,
-                    feedback: "On-demand activation reduces standby power consumption and data transmission by up to 80% compared to always-listening devices."
+                    feedback: "L'activation à la demande réduit la consommation d'énergie en veille et la transmission de données jusqu'à 80% par rapport aux appareils toujours à l'écoute."
                 }
             ]
         },
         {
             id: 12,
-            title: "Digital Media Consumption",
+            title: "Consommation de Médias Numériques",
             options: [
                 {
-                    title: "Stream Everything",
+                    title: "Tout Streamer",
                     icon: "📺",
                     image: "☁️",
-                    description: "Streaming all music, movies and content on-demand.",
+                    description: "Streamer toute la musique, les films et le contenu à la demande.",
                     eco: false,
-                    feedback: "Streaming a movie can emit up to 8 times more carbon than downloading it for multiple viewings due to repeated data transmission."
+                    feedback: "Streamer un film peut émettre jusqu'à 8 fois plus de carbone que de le télécharger pour plusieurs visionnages en raison de la transmission répétée des données."
                 },
                 {
-                    title: "Download for Repeat Use",
+                    title: "Télécharger pour une Utilisation Répétée",
                     icon: "💾",
                     image: "🔄",
-                    description: "Downloading content you'll access multiple times.",
+                    description: "Télécharger le contenu que vous allez accéder plusieurs fois.",
                     eco: true,
-                    feedback: "Downloading content once for repeated viewing reduces carbon emissions by up to 88% compared to streaming it multiple times."
+                    feedback: "Télécharger le contenu une seule fois pour le visionner plusieurs fois réduit les émissions de carbone jusqu'à 88% par rapport au streaming multiple."
                 }
             ]
         },
         {
             id: 13,
-            title: "AI Usage",
+            title: "Utilisation de l'IA",
             options: [
                 {
-                    title: "Heavy AI Model Use",
+                    title: "Utilisation Intensive de Modèles d'IA",
                     icon: "🤖",
                     image: "⚙️",
-                    description: "Using large AI models for every small task or query.",
+                    description: "Utiliser de grands modèles d'IA pour chaque petite tâche ou requête.",
                     eco: false,
-                    feedback: "Training a single large AI model can emit as much CO2 as five cars over their lifetimes. Even using these models consumes significant energy."
+                    feedback: "L'entraînement d'un seul grand modèle d'IA peut émettre autant de CO2 que cinq voitures sur leur durée de vie. Même l'utilisation de ces modèles consomme une quantité significative d'énergie."
                 },
                 {
-                    title: "Selective AI Usage",
+                    title: "Utilisation Sélective de l'IA",
                     icon: "🧠",
                     image: "⚖️",
-                    description: "Using AI selectively for complex tasks that truly need it.",
+                    description: "Utiliser l'IA de manière sélective pour les tâches complexes qui en ont vraiment besoin.",
                     eco: true,
-                    feedback: "Reserving AI for appropriate use cases reduces unnecessary computation and the associated energy consumption of data centers."
+                    feedback: "Réserver l'IA pour les cas d'utilisation appropriés réduit les calculs inutiles et la consommation d'énergie associée des centres de données."
                 }
             ]
         },
         {
             id: 14,
-            title: "Digital Photos",
+            title: "Photos Numériques",
             options: [
                 {
-                    title: "Store All Photos Forever",
+                    title: "Stocker Toutes les Photos Indéfiniment",
                     icon: "📸",
                     image: "🗃️",
-                    description: "Keeping every digital photo you take indefinitely in cloud storage.",
+                    description: "Garder chaque photo prise indéfiniment dans le stockage cloud.",
                     eco: false,
-                    feedback: "The average user stores 2,500+ photos, consuming server space and energy. Many are duplicates or low-quality shots never viewed again."
+                    feedback: "L'utilisateur moyen stocke 2500+ photos, consommant de l'espace serveur et de l'énergie. Beaucoup sont des doublons ou des clichés de faible qualité jamais revus."
                 },
                 {
-                    title: "Curate Photo Collections",
+                    title: "Curer les Collections de Photos",
                     icon: "🖼️",
                     image: "✂️",
-                    description: "Regularly reviewing and deleting unwanted or duplicate photos.",
+                    description: "Révisez et supprimez régulièrement les photos indésirables ou en double.",
                     eco: true,
-                    feedback: "Curating digital photos can reduce storage needs by 30-50%, decreasing the energy required for cloud storage and backups."
+                    feedback: "Curer les photos numériques peut réduire les besoins de stockage de 30-50%, diminuant l'énergie requise pour le stockage cloud et les sauvegardes."
                 }
             ]
         }
     ];
 
-
-    // DOM Elements
+    // Éléments du DOM
     const ecoScoreElement = document.getElementById('eco-score');
     const comparisonsContainer = document.getElementById('comparisons');
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -1043,25 +1042,25 @@
     const restartQuizButton = document.getElementById('restart-quiz');
     const learnMoreButton = document.getElementById('learn-more-btn');
 
-    // Initialize eco score from localStorage or set to 0
+    // Initialiser le score écologique à partir de localStorage ou le définir à 0
     let ecoScore = 0;
     ecoScoreElement.textContent = ecoScore;
 
-    // Current question index
+    // Index de la question actuelle
     let currentQuestionIndex = 0;
     let questionAnswered = false;
 
-    // Randomized question order
+    // Ordre des questions aléatoires
     let questionOrder = [];
 
-    // Initialize question order
+    // Initialiser l'ordre des questions
     function initializeQuestionOrder() {
-        // Create array of indices and shuffle it
+        // Créer un tableau d'index et le mélanger
         questionOrder = Array.from({ length: comparisons.length }, (_, i) => i);
         shuffleArray(questionOrder);
     }
 
-    // Fisher-Yates shuffle algorithm
+    // Algorithme de mélange Fisher-Yates
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -1069,19 +1068,19 @@
         }
     }
 
-    // Generate comparison sections
+    // Générer les sections de comparaison
     function generateComparisons() {
-        // Clear existing content
+        // Effacer le contenu existant
         comparisonsContainer.innerHTML = '';
 
-        // Create all comparison sections but hide them initially
+        // Créer toutes les sections de comparaison mais les masquer initialement
         questionOrder.forEach((questionIndex, index) => {
             const comparison = comparisons[questionIndex];
             const comparisonSection = document.createElement('div');
             comparisonSection.classList.add('comparison-section');
             comparisonSection.style.display = index === currentQuestionIndex ? 'block' : 'none';
 
-            // Randomize the order of options (50% chance to swap)
+            // Randomiser l'ordre des options (50% de chance d'échanger)
             let options = [...comparison.options];
             if (Math.random() > 0.5) {
                 options = [options[1], options[0]];
@@ -1098,13 +1097,12 @@
                             </div>
                             <div class="option-image">${option.image}</div>
                             <p class="option-description">${option.description}</p>
-                            <button class="btn choose-btn" data-comparison="${comparison.id}" data-option="${optIndex}" data-eco="${option.eco}">Choose</button>
+                            <button class="btn choose-btn" data-comparison="${comparison.id}" data-option="${optIndex}" data-eco="${option.eco}">Choisir</button>
                             <div class="feedback ${option.eco ? 'correct' : 'incorrect'}">
                                 <div class="feedback-title">
-                                    ${option.eco ? '✅ Good Choice!' : '❌ Less Eco-Friendly'}
+                                    ${option.eco ? '✅ Bon Choix !' : '❌ Moins Écologique'}
                                 </div>
                                 <div class="feedback-content">${option.feedback}</div>
-
                             </div>
                         </div>
                     `).join('')}
@@ -1113,178 +1111,178 @@
             comparisonsContainer.appendChild(comparisonSection);
         });
 
-        // Update progress bar
+        // Mettre à jour la barre de progression
         updateProgressBar();
     }
 
-    // Update progress bar
+    // Mettre à jour la barre de progression
     function updateProgressBar() {
         const progress = ((currentQuestionIndex) / (questionOrder.length - 1)) * 100;
         progressBar.style.width = `${progress}%`;
     }
 
-    // Show feedback for selected option
+    // Afficher le feedback pour l'option sélectionnée
     function showFeedback(comparisonId, optionIndex, isEco) {
         if (questionAnswered) return;
 
-        // Find the current comparison section
+        // Trouver la section de comparaison actuelle
         const currentSection = comparisonsContainer.children[currentQuestionIndex];
         const comparisonDiv = currentSection.querySelector(`.comparison`);
 
-        // Hide all feedbacks in this comparison first
+        // Masquer tous les feedbacks dans cette comparaison d'abord
         const allFeedbacks = comparisonDiv.querySelectorAll('.feedback');
         allFeedbacks.forEach(feedback => {
             feedback.style.display = 'none';
         });
 
-        // Show selected feedback
+        // Afficher le feedback sélectionné
         const selectedOption = comparisonDiv.querySelectorAll('.option')[optionIndex];
         const feedback = selectedOption.querySelector('.feedback');
         feedback.style.display = 'block';
 
-        // Update score if it's the eco-friendly option
+        // Mettre à jour le score si c'est l'option écologique
         if (isEco === "true") {
             ecoScore += 10;
             ecoScoreElement.textContent = ecoScore;
             localStorage.setItem('ecoScore', ecoScore);
 
-            // Add falling leaves animation for correct choice
+            // Ajouter l'animation des feuilles tombantes pour le bon choix
             createFallingLeaves(selectedOption);
         }
 
-        // Mark question as answered
+        // Marquer la question comme répondue
         questionAnswered = true;
 
-        // Show next button if not the last question
+        // Afficher le bouton suivant si ce n'est pas la dernière question
         if (currentQuestionIndex < questionOrder.length - 1) {
             nextButton.style.display = 'block';
         } else {
-            // Show results screen if it's the last question
+            // Afficher l'écran des résultats si c'est la dernière question
             setTimeout(() => {
                 showResults();
             }, 1500);
         }
     }
 
-    // Show results screen
+    // Afficher l'écran des résultats
     function showResults() {
-        // Hide current question
+        // Masquer la question actuelle
         const currentSection = comparisonsContainer.children[currentQuestionIndex];
         currentSection.style.display = 'none';
 
-        // Hide next button
+        // Masquer le bouton suivant
         nextButton.style.display = 'none';
 
-        // Update final score
+        // Mettre à jour le score final
         finalScoreElement.textContent = ecoScore;
 
-        // Set appropriate message based on score
+        // Définir le message approprié en fonction du score
         const maxScore = questionOrder.length * 10;
         const scorePercentage = (ecoScore / maxScore) * 100;
 
         let message, badge;
         if (scorePercentage >= 80) {
-            message = "Excellent! You're a digital eco-warrior! Your choices show a strong commitment to sustainable digital practices.";
+            message = "Excellent ! Vous êtes un guerrier écologique du numérique ! Vos choix montrent un fort engagement envers des pratiques numériques durables.";
             badge = "🏆";
         } else if (scorePercentage >= 60) {
-            message = "Good job! You're making eco-conscious digital choices. With a few adjustments, you can further reduce your digital footprint.";
+            message = "Bon travail ! Vous faites des choix numériques conscients de l'écologie. Avec quelques ajustements, vous pouvez encore réduire votre empreinte numérique.";
             badge = "🌱";
         } else if (scorePercentage >= 40) {
-            message = "You're on the right track! Learning about sustainable digital habits is the first step toward reducing your environmental impact.";
+            message = "Vous êtes sur la bonne voie ! Apprendre à adopter des habitudes numériques durables est la première étape vers la réduction de votre impact environnemental.";
             badge = "🌿";
         } else {
-            message = "There's room for improvement in your digital habits. Check out our tips to make more eco-friendly choices!";
+            message = "Il y a de la place pour l'amélioration dans vos habitudes numériques. Consultez nos conseils pour faire des choix plus écologiques !";
             badge = "🍃";
         }
 
         resultsMessageElement.textContent = message;
         resultsBadgeElement.textContent = badge;
 
-        // Show results container
+        // Afficher le conteneur des résultats
         resultsContainer.style.display = 'block';
     }
 
-    // Move to next question
+    // Passer à la question suivante
     function nextQuestion() {
         if (currentQuestionIndex < questionOrder.length - 1) {
-            // Hide current question
+            // Masquer la question actuelle
             const currentSection = comparisonsContainer.children[currentQuestionIndex];
             currentSection.style.display = 'none';
 
-            // Show next question
+            // Afficher la question suivante
             currentQuestionIndex++;
             const nextSection = comparisonsContainer.children[currentQuestionIndex];
             nextSection.style.display = 'block';
 
-            // Update progress bar
+            // Mettre à jour la barre de progression
             updateProgressBar();
 
-            // Reset state
+            // Réinitialiser l'état
             questionAnswered = false;
             nextButton.style.display = 'none';
         }
     }
 
-    // Restart quiz
+    // Recommencer le quiz
     function restartQuiz() {
-        // Reset score
+        // Réinitialiser le score
         ecoScore = 0;
         ecoScoreElement.textContent = ecoScore;
         localStorage.setItem('ecoScore', ecoScore);
 
-        // Reset question index
+        // Réinitialiser l'index de la question
         currentQuestionIndex = 0;
         questionAnswered = false;
 
-        // Hide results container
+        // Masquer le conteneur des résultats
         resultsContainer.style.display = 'none';
 
-        // Randomize questions again
+        // Mélanger à nouveau les questions
         initializeQuestionOrder();
 
-        // Regenerate comparisons
+        // Regénérer les comparaisons
         generateComparisons();
     }
 
-    // Create falling leaves animation
+    // Créer l'animation des feuilles tombantes
     function createFallingLeaves(container) {
         for (let i = 0; i < 5; i++) {
             const leaf = document.createElement('div');
             leaf.classList.add('falling-leaf');
             leaf.textContent = '🍃';
 
-            // Random position
+            // Position aléatoire
             const xPos = Math.random() * container.offsetWidth;
 
-            // Set initial position
+            // Définir la position initiale
             leaf.style.left = `${xPos}px`;
             leaf.style.top = '0';
 
-            // Random animation duration
+            // Durée d'animation aléatoire
             const duration = 3 + Math.random() * 2;
             leaf.style.animationDuration = `${duration}s`;
 
-            // Add to container
+            // Ajouter au conteneur
             container.appendChild(leaf);
 
-            // Remove after animation
+            // Supprimer après l'animation
             setTimeout(() => {
                 leaf.remove();
             }, duration * 1000);
         }
     }
 
-    // Navigation between pages
+    // Navigation entre les pages
     function setupNavigation() {
         navButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const targetPage = button.getAttribute('data-page');
 
-                // Update active button
+                // Mettre à jour le bouton actif
                 navButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
-                // Show target page, hide others
+                // Afficher la page cible, masquer les autres
                 pages.forEach(page => {
                     if (page.id === `${targetPage}-page`) {
                         page.classList.remove('hidden');
@@ -1296,18 +1294,18 @@
         });
     }
 
-    // Initialize the application
+    // Initialiser l'application
     function init() {
-        // Initialize randomized question order
+        // Initialiser l'ordre aléatoire des questions
         initializeQuestionOrder();
 
-        // Generate comparisons
+        // Générer les comparaisons
         generateComparisons();
 
-        // Setup navigation
+        // Configurer la navigation
         setupNavigation();
 
-        // Add event listeners to all choose buttons
+        // Ajouter des écouteurs d'événements à tous les boutons de choix
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('choose-btn')) {
                 const comparisonId = e.target.getAttribute('data-comparison');
@@ -1317,13 +1315,13 @@
             }
         });
 
-        // Add event listener for next button
+        // Ajouter un écouteur d'événement pour le bouton suivant
         nextButton.addEventListener('click', nextQuestion);
 
-        // Add event listeners for results screen buttons
+        // Ajouter des écouteurs d'événements pour les boutons de l'écran des résultats
         restartQuizButton.addEventListener('click', restartQuiz);
         learnMoreButton.addEventListener('click', () => {
-            // Switch to Learn More tab
+            // Passer à l'onglet En savoir plus
             navButtons.forEach(btn => {
                 if (btn.getAttribute('data-page') === 'education') {
                     btn.click();
@@ -1332,7 +1330,7 @@
         });
     }
 
-    // Run initialization
+    // Exécuter l'initialisation
     init();
 </script>
 </body>
