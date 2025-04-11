@@ -761,8 +761,273 @@
                     feedback: "Digital documents eliminate paper use and the associated environmental impacts of printing and physical storage."
                 }
             ]
+        },
+        {
+            id: 7,
+            title: "Internet Browsing",
+            options: [
+                {
+                    title: "Use Heavy Websites with Large Images",
+                    icon: "🌐",
+                    image: "🖼️",
+                    description: "Browsing websites with high-resolution images and complex media elements.",
+                    eco: false,
+                    feedback: "Heavy websites consume more data and require more energy from data centers and devices to load and render content."
+                },
+                {
+                    title: "Browse Optimized Websites with Smaller Images",
+                    icon: "🖥️",
+                    image: "📉",
+                    description: "Browsing websites designed for speed, with optimized content and smaller images.",
+                    eco: true,
+                    feedback: "Optimized websites reduce the amount of data transferred, leading to lower energy consumption for both the server and your device."
+                }
+            ]
+        },
+        {
+            id: 8,
+            title: "Video Conferencing",
+            options: [
+                {
+                    title: "Use Video with High Resolution",
+                    icon: "📹",
+                    image: "💻",
+                    description: "Participating in video calls with high-definition video resolution.",
+                    eco: false,
+                    feedback: "High-definition video calls consume more data, increasing the energy usage of the servers and devices involved."
+                },
+                {
+                    title: "Use Audio Only",
+                    icon: "🎙️",
+                    image: "🎧",
+                    description: "Opting for audio-only calls instead of using video.",
+                    eco: true,
+                    feedback: "Audio-only calls significantly reduce data usage and server load, leading to lower energy consumption."
+                }
+            ]
+        },
+        {
+            id: 9,
+            title: "Streaming Music",
+            options: [
+                {
+                    title: "Stream Music in Lossless Quality",
+                    icon: "🎶",
+                    image: "🎧",
+                    description: "Streaming music in high-quality lossless audio formats.",
+                    eco: false,
+                    feedback: "Lossless music formats use significantly more data than compressed audio formats, which increases the energy used during streaming."
+                },
+                {
+                    title: "Stream Music in Compressed Quality",
+                    icon: "🎵",
+                    image: "📱",
+                    description: "Streaming music in compressed audio formats such as MP3.",
+                    eco: true,
+                    feedback: "Compressed formats use less data, reducing the amount of bandwidth required and the energy consumed during streaming."
+                }
+            ]
+        },
+        {
+            id: 10,
+            title: "Social Media Use",
+            options: [
+                {
+                    title: "Post with High-Quality Photos and Videos",
+                    icon: "📸",
+                    image: "📱",
+                    description: "Posting content with high-resolution images and videos on social media.",
+                    eco: false,
+                    feedback: "High-quality images and videos require larger file sizes, leading to more data consumption and higher energy usage during upload and viewing."
+                },
+                {
+                    title: "Post with Low-Resolution Content",
+                    icon: "🖼️",
+                    image: "💬",
+                    description: "Sharing content with smaller images or text-based posts.",
+                    eco: true,
+                    feedback: "Lower-resolution posts use less data and require less energy for upload, processing, and viewing, reducing the environmental impact."
+                }
+            ]
+        },
+        {
+            id: 7,
+            title: "Video Conferencing",
+            options: [
+                {
+                    title: "Video-on Meetings",
+                    icon: "🎥",
+                    image: "👨‍💻",
+                    description: "Always keeping video on during online meetings and calls.",
+                    eco: false,
+                    feedback: "Video streaming in meetings can use up to 2.5GB per hour, increasing data center energy consumption and carbon emissions."
+                },
+                {
+                    title: "Audio-only When Possible",
+                    icon: "🎧",
+                    image: "🔊",
+                    description: "Using audio-only mode when video isn't necessary.",
+                    eco: true,
+                    feedback: "Audio-only calls use about 90% less data than video calls, significantly reducing energy consumption and carbon footprint."
+                }
+            ]
+        },
+        {
+            id: 8,
+            title: "Web Browsing",
+            options: [
+                {
+                    title: "Multiple Tabs Always Open",
+                    icon: "🔄",
+                    image: "📊",
+                    description: "Keeping dozens of browser tabs open continuously.",
+                    eco: false,
+                    feedback: "Each active tab consumes memory and processing power, increasing device energy consumption by up to 20% compared to efficient browsing."
+                },
+                {
+                    title: "Close Unused Tabs",
+                    icon: "✖️",
+                    image: "📱",
+                    description: "Closing tabs when finished and using bookmarks instead.",
+                    eco: true,
+                    feedback: "Closing unused tabs reduces RAM usage, CPU load, and extends battery life, reducing overall energy consumption."
+                }
+            ]
+        },
+        {
+            id: 9,
+            title: "Software Updates",
+            options: [
+                {
+                    title: "Always Update Everything",
+                    icon: "🔄",
+                    image: "⬆️",
+                    description: "Installing all software updates immediately across all applications.",
+                    eco: false,
+                    feedback: "Constant software updates can prematurely obsolete hardware that can't handle newer versions, contributing to e-waste."
+                },
+                {
+                    title: "Selective Security Updates",
+                    icon: "🔒",
+                    image: "🛡️",
+                    description: "Installing security updates while being selective about feature updates.",
+                    eco: true,
+                    feedback: "Prioritizing security updates while limiting unnecessary feature updates extends device compatibility and reduces forced obsolescence."
+                }
+            ]
+        },
+        {
+            id: 10,
+            title: "Internet Searches",
+            options: [
+                {
+                    title: "Multiple Search Queries",
+                    icon: "🔍",
+                    image: "❓",
+                    description: "Making multiple vague searches for the same information.",
+                    eco: false,
+                    feedback: "Each search emits about 0.2g CO2e. Multiple searches for the same information unnecessarily multiply this impact."
+                },
+                {
+                    title: "Targeted Specific Searches",
+                    icon: "🎯",
+                    image: "📝",
+                    description: "Using specific search terms to find information in fewer attempts.",
+                    eco: true,
+                    feedback: "Well-formulated searches reduce the number of queries needed, minimizing data center processing and associated emissions."
+                }
+            ]
+        },
+        {
+            id: 11,
+            title: "Smart Home Devices",
+            options: [
+                {
+                    title: "Always-on Voice Assistants",
+                    icon: "🔊",
+                    image: "🏠",
+                    description: "Using multiple always-listening smart speakers throughout your home.",
+                    eco: false,
+                    feedback: "Always-on devices consume 'phantom power' and continuously send data to cloud servers, consuming energy even when not actively used."
+                },
+                {
+                    title: "On-Demand Activation",
+                    icon: "👆",
+                    image: "⏯️",
+                    description: "Using manual activation or scheduling for smart home functions.",
+                    eco: true,
+                    feedback: "On-demand activation reduces standby power consumption and data transmission by up to 80% compared to always-listening devices."
+                }
+            ]
+        },
+        {
+            id: 12,
+            title: "Digital Media Consumption",
+            options: [
+                {
+                    title: "Stream Everything",
+                    icon: "📺",
+                    image: "☁️",
+                    description: "Streaming all music, movies and content on-demand.",
+                    eco: false,
+                    feedback: "Streaming a movie can emit up to 8 times more carbon than downloading it for multiple viewings due to repeated data transmission."
+                },
+                {
+                    title: "Download for Repeat Use",
+                    icon: "💾",
+                    image: "🔄",
+                    description: "Downloading content you'll access multiple times.",
+                    eco: true,
+                    feedback: "Downloading content once for repeated viewing reduces carbon emissions by up to 88% compared to streaming it multiple times."
+                }
+            ]
+        },
+        {
+            id: 13,
+            title: "AI Usage",
+            options: [
+                {
+                    title: "Heavy AI Model Use",
+                    icon: "🤖",
+                    image: "⚙️",
+                    description: "Using large AI models for every small task or query.",
+                    eco: false,
+                    feedback: "Training a single large AI model can emit as much CO2 as five cars over their lifetimes. Even using these models consumes significant energy."
+                },
+                {
+                    title: "Selective AI Usage",
+                    icon: "🧠",
+                    image: "⚖️",
+                    description: "Using AI selectively for complex tasks that truly need it.",
+                    eco: true,
+                    feedback: "Reserving AI for appropriate use cases reduces unnecessary computation and the associated energy consumption of data centers."
+                }
+            ]
+        },
+        {
+            id: 14,
+            title: "Digital Photos",
+            options: [
+                {
+                    title: "Store All Photos Forever",
+                    icon: "📸",
+                    image: "🗃️",
+                    description: "Keeping every digital photo you take indefinitely in cloud storage.",
+                    eco: false,
+                    feedback: "The average user stores 2,500+ photos, consuming server space and energy. Many are duplicates or low-quality shots never viewed again."
+                },
+                {
+                    title: "Curate Photo Collections",
+                    icon: "🖼️",
+                    image: "✂️",
+                    description: "Regularly reviewing and deleting unwanted or duplicate photos.",
+                    eco: true,
+                    feedback: "Curating digital photos can reduce storage needs by 30-50%, decreasing the energy required for cloud storage and backups."
+                }
+            ]
         }
     ];
+
 
     // DOM Elements
     const ecoScoreElement = document.getElementById('eco-score');
