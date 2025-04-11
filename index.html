@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉcoChoice - Compare Digital Habits</title>
+    <style>
+        :root {
+            --dark-green: #286232;
+            --light-green: #50984f;
+            --pink: #ffc1e7;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #fff;
+            --correct-color: #50984f;
+            --incorrect-color: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .eco-logo {
+            font-weight: bold;
+        }
+
+        .eco-logo span {
+            color: var(--pink);
+        }
+
+        .score-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .leaf-icon {
+            color: var(--pink);
+            margin-right: 5px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .comparison-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .comparison {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .option::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--dark-green), var(--light-green));
+            border-radius: 10px 10px 0 0;
+        }
+
+        .option-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .option-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 193, 231, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--dark-green);
+            font-size: 1.5rem;
+        }
+
+        .option-title {
+            font-size: 1.2rem;
+            color: var(--dark-green);
+        }
+
+        .option-image {
+            width: 100%;
+            height: 180px;
+            background-color: rgba(255, 193, 231, 0.2);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-image::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        .option-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(40, 98, 50, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(40, 98, 50, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(40, 98, 50, 0.2);
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--light-green);
+            color: white;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .feedback.correct {
+            background-color: var(--correct-color);
+        }
+
+        .feedback.incorrect {
+            background-color: var(--incorrect-color);
+        }
+
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feedback-content {
+            font-size: 0.95rem;
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-green);
+            position: relative;
+        }
+
+        .comparison-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 60px;
+            height: 2px;
+            background-color: var(--pink);
+        }
+
+        .next-button {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+        }
+
+        .next-button:hover {
+            background: linear-gradient(135deg, var(--light-green), var(--dark-green));
+            box-shadow: 0 4px 10px rgba(40, 98, 50, 0.3);
+        }
+
+        .falling-leaf {
+            position: absolute;
+            font-size: 20px;
+            color: var(--light-green);
+            animation: fallingSpin 5s linear;
+            z-index: 10;
+        }
+
+        @keyframes fallingSpin {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(800px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .education-section {
+            margin-top: 4rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .education-section h2 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 0.5rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: rgba(80, 152, 79, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--dark-green);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .tips-list {
+            list-style-type: none;
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "🍃";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #navigation {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 193, 231, 0.3);
+            color: var(--dark-green);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--pink);
+            color: var(--dark-green);
+        }
+
+        .nav-btn.active {
+            background-color: var(--pink);
+            color: var(--dark-green);
+            font-weight: bold;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(80, 152, 79, 0.2);
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dark-green), var(--light-green));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Results screen styles */
+        .results-container {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .results-header {
+            margin-bottom: 2rem;
+        }
+
+        .results-title {
+            font-size: 2rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        .results-score {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--dark-green);
+            margin: 1rem 0;
+        }
+
+        .results-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .results-badge {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background-color: rgba(255, 193, 231, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .results-btn {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-width: 150px;
+        }
+
+        .results-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--light-green);
+            color: var(--dark-green);
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .comparison {
+                flex-direction: column;
+            }
+
+            .option {
+                min-width: auto;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <h1 class="eco-logo">Éco<span>Choice</span></h1>
+        <p>Make sustainable digital choices for a greener future</p>
+        <div class="score-container">
+            <span class="leaf-icon">🍃</span> Eco Score: <span id="eco-score">0</span> points
+        </div>
+    </div>
+</header>
+
+<main>
+    <div id="navigation">
+        <button class="nav-btn active" data-page="comparisons">Digital Choices</button>
+        <button class="nav-btn" data-page="education">Learn More</button>
+    </div>
+
+    <div id="comparisons-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="comparison-container" id="comparisons">
+            <!-- Comparison sections will be added here via JavaScript -->
+        </div>
+        <button id="next-button" class="next-button">Next Question</button>
+
+        <!-- Results screen (new) -->
+        <div id="results-container" class="results-container">
+            <div class="results-header">
+                <h2 class="results-title">Quiz Complete!</h2>
+                <p>Thank you for making eco-friendly digital choices</p>
+            </div>
+            <div class="results-badge" id="results-badge">🍃</div>
+            <div class="results-score">
+                <span id="final-score">0</span> points
+            </div>
+            <div class="results-message" id="results-message">
+                <!-- Message will be set dynamically based on score -->
+            </div>
+            <div class="results-actions">
+                <button id="restart-quiz" class="results-btn">Try Again</button>
+                <button id="learn-more-btn" class="results-btn secondary">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="education-page" class="hidden">
+        <div class="education-section">
+            <h2>Digital Ecology Impact</h2>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">200 TWh</div>
+                    <div class="stat-title">Data Centers Energy Use</div>
+                    <div class="stat-description">Global data centers use approximately 200 terawatt-hours of electricity annually, equivalent to the energy consumption of some countries.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">80-85%</div>
+                    <div class="stat-title">Device Carbon Footprint</div>
+                    <div class="stat-description">80-85% of a smartphone's carbon footprint comes from manufacturing, not usage, highlighting the importance of extending device lifespans.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">50+ million</div>
+                    <div class="stat-title">E-Waste Generated</div>
+                    <div class="stat-description">Over 50 million tons of electronic waste is generated globally each year, with only about 20% being properly recycled.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">4%</div>
+                    <div class="stat-title">Global CO₂ Emissions</div>
+                    <div class="stat-description">The IT sector is responsible for approximately 4% of global CO₂ emissions, comparable to the airline industry.</div>
+                </div>
+            </div>
+
+            <h2>Sustainable Digital Habits</h2>
+            <ul class="tips-list">
+                <li><strong>Extend device lifespan:</strong> Keep your devices for at least 3-4 years before upgrading to reduce manufacturing impacts.</li>
+                <li><strong>Reduce streaming quality:</strong> Lower video resolution when possible, as streaming accounts for more than 60% of global internet traffic.</li>
+                <li><strong>Clean your digital footprint:</strong> Delete unnecessary emails, photos, and files from cloud storage to reduce server energy usage.</li>
+                <li><strong>Use Wi-Fi over cellular:</strong> Wi-Fi connections typically use less energy than cellular data connections.</li>
+                <li><strong>Proper e-waste disposal:</strong> Always recycle electronics through certified e-waste recyclers to prevent toxic materials from entering landfills.</li>
+                <li><strong>Disable autoplay:</strong> Turn off autoplay features on streaming services to avoid unnecessary data consumption.</li>
+                <li><strong>Dark mode:</strong> Using dark mode on OLED screens can reduce power consumption by up to 30%.</li>
+                <li><strong>Eco-friendly search engines:</strong> Consider using search engines that invest in carbon offset projects.</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2025 ÉcoChoice | Raising awareness about digital environmental impact</p>
+        <p>Make every digital choice count for our planet</p>
+    </div>
+</footer>
+
+<script>
+    // Data for comparisons
+    const comparisons = [
+        {
+            id: 1,
+            title: "Sharing Files",
+            options: [
+                {
+                    title: "Send 1MB Email Attachment",
+                    icon: "📧",
+                    image: "📁",
+                    description: "Sending files directly as email attachments to multiple recipients.",
+                    eco: false,
+                    feedback: "Email attachments are stored multiple times across servers and in each recipient's inbox, consuming more storage space and energy."
+                },
+                {
+                    title: "Share Download Link",
+                    icon: "🔗",
+                    image: "🌐",
+                    description: "Sharing a link to download the file from a single source.",
+                    eco: true,
+                    feedback: "Using download links stores the file once and allows multiple people to access it, reducing server storage needs and energy consumption."
+                }
+            ]
+        },
+        {
+            id: 2,
+            title: "Video Streaming",
+            options: [
+                {
+                    title: "Stream in 4K Resolution",
+                    icon: "🎬",
+                    image: "📺",
+                    description: "Watching videos in ultra-high 4K resolution.",
+                    eco: false,
+                    feedback: "4K streaming uses approximately 4 times more data than HD, requiring more bandwidth and server energy to deliver."
+                },
+                {
+                    title: "Watch in HD Resolution",
+                    icon: "🎥",
+                    image: "🖥️",
+                    description: "Watching videos in standard HD (1080p) resolution.",
+                    eco: true,
+                    feedback: "HD streaming provides good quality while using significantly less data and energy compared to 4K resolution."
+                }
+            ]
+        },
+        {
+            id: 3,
+            title: "Device Lifecycle",
+            options: [
+                {
+                    title: "Upgrade Annually",
+                    icon: "📱",
+                    image: "🔄",
+                    description: "Replacing your smartphone with the newest model every year.",
+                    eco: false,
+                    feedback: "Manufacturing new devices is resource-intensive. Up to 85% of a smartphone's carbon footprint comes from production, not usage."
+                },
+                {
+                    title: "Keep for 3+ Years",
+                    icon: "⏳",
+                    image: "🛠️",
+                    description: "Using your smartphone for at least 3 years before upgrading.",
+                    eco: true,
+                    feedback: "Extending device lifespan to 3+ years significantly reduces manufacturing impacts and e-waste generation."
+                }
+            ]
+        },
+        {
+            id: 4,
+            title: "Data Storage",
+            options: [
+                {
+                    title: "Use Cloud Storage",
+                    icon: "☁️",
+                    image: "📤",
+                    description: "Storing all your files in cloud-based services.",
+                    eco: false,
+                    feedback: "Cloud storage requires constant server operation and energy consumption, especially for frequently accessed files."
+                },
+                {
+                    title: "Use External Hard Drive",
+                    icon: "💾",
+                    image: "📥",
+                    description: "Storing files locally on an external storage device.",
+                    eco: true,
+                    feedback: "Local storage consumes energy only when in use, rather than requiring constant server operation and internet connectivity."
+                }
+            ]
+        },
+        {
+            id: 5,
+            title: "Power Management",
+            options: [
+                {
+                    title: "Leave Devices on Standby",
+                    icon: "💤",
+                    image: "⏰",
+                    description: "Keeping devices in sleep or standby mode when not in use.",
+                    eco: false,
+                    feedback: "Standby power can account for 5-10% of household electricity use, as devices continue to draw power even when not actively used."
+                },
+                {
+                    title: "Fully Power Off",
+                    icon: "⚡",
+                    image: "🔌",
+                    description: "Completely shutting down devices when not in use.",
+                    eco: true,
+                    feedback: "Powering off devices completely eliminates standby power consumption and can save significant energy over time."
+                }
+            ]
+        },
+        {
+            id: 6,
+            title: "Document Management",
+            options: [
+                {
+                    title: "Printed Documents",
+                    icon: "🖨️",
+                    image: "📄",
+                    description: "Printing physical copies of documents for reading and storage.",
+                    eco: false,
+                    feedback: "Paper production, printing, and physical storage all have environmental impacts, including deforestation and chemical usage."
+                },
+                {
+                    title: "Digital Documents",
+                    icon: "📱",
+                    image: "💻",
+                    description: "Reading and storing documents in digital format.",
+                    eco: true,
+                    feedback: "Digital documents eliminate paper use and the associated environmental impacts of printing and physical storage."
+                }
+            ]
+        }
+    ];
+
+    // DOM Elements
+    const ecoScoreElement = document.getElementById('eco-score');
+    const comparisonsContainer = document.getElementById('comparisons');
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const pages = document.querySelectorAll('#comparisons-page, #education-page');
+    const nextButton = document.getElementById('next-button');
+    const progressBar = document.getElementById('progress-bar');
+    const resultsContainer = document.getElementById('results-container');
+    const finalScoreElement = document.getElementById('final-score');
+    const resultsMessageElement = document.getElementById('results-message');
+    const resultsBadgeElement = document.getElementById('results-badge');
+    const restartQuizButton = document.getElementById('restart-quiz');
+    const learnMoreButton = document.getElementById('learn-more-btn');
+
+    // Initialize eco score from localStorage or set to 0
+    let ecoScore = 0;
+    ecoScoreElement.textContent = ecoScore;
+
+    // Current question index
+    let currentQuestionIndex = 0;
+    let questionAnswered = false;
+
+    // Randomized question order
+    let questionOrder = [];
+
+    // Initialize question order
+    function initializeQuestionOrder() {
+        // Create array of indices and shuffle it
+        questionOrder = Array.from({ length: comparisons.length }, (_, i) => i);
+        shuffleArray(questionOrder);
+    }
+
+    // Fisher-Yates shuffle algorithm
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Generate comparison sections
+    function generateComparisons() {
+        // Clear existing content
+        comparisonsContainer.innerHTML = '';
+
+        // Create all comparison sections but hide them initially
+        questionOrder.forEach((questionIndex, index) => {
+            const comparison = comparisons[questionIndex];
+            const comparisonSection = document.createElement('div');
+            comparisonSection.classList.add('comparison-section');
+            comparisonSection.style.display = index === currentQuestionIndex ? 'block' : 'none';
+
+            // Randomize the order of options (50% chance to swap)
+            let options = [...comparison.options];
+            if (Math.random() > 0.5) {
+                options = [options[1], options[0]];
+            }
+
+            comparisonSection.innerHTML = `
+                <h2 class="comparison-title">${comparison.title}</h2>
+                <div class="comparison" id="comparison-${comparison.id}">
+                    ${options.map((option, optIndex) => `
+                        <div class="option" id="option-${comparison.id}-${optIndex}">
+                            <div class="option-header">
+                                <div class="option-icon">${option.icon}</div>
+                                <h3 class="option-title">${option.title}</h3>
+                            </div>
+                            <div class="option-image">${option.image}</div>
+                            <p class="option-description">${option.description}</p>
+                            <button class="btn choose-btn" data-comparison="${comparison.id}" data-option="${optIndex}" data-eco="${option.eco}">Choose</button>
+                            <div class="feedback ${option.eco ? 'correct' : 'incorrect'}">
+                                <div class="feedback-title">
+                                    ${option.eco ? '✅ Good Choice!' : '❌ Less Eco-Friendly'}
+                                </div>
+                                <div class="feedback-content">${option.feedback}</div>
+
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            comparisonsContainer.appendChild(comparisonSection);
+        });
+
+        // Update progress bar
+        updateProgressBar();
+    }
+
+    // Update progress bar
+    function updateProgressBar() {
+        const progress = ((currentQuestionIndex) / (questionOrder.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    // Show feedback for selected option
+    function showFeedback(comparisonId, optionIndex, isEco) {
+        if (questionAnswered) return;
+
+        // Find the current comparison section
+        const currentSection = comparisonsContainer.children[currentQuestionIndex];
+        const comparisonDiv = currentSection.querySelector(`.comparison`);
+
+        // Hide all feedbacks in this comparison first
+        const allFeedbacks = comparisonDiv.querySelectorAll('.feedback');
+        allFeedbacks.forEach(feedback => {
+            feedback.style.display = 'none';
+        });
+
+        // Show selected feedback
+        const selectedOption = comparisonDiv.querySelectorAll('.option')[optionIndex];
+        const feedback = selectedOption.querySelector('.feedback');
+        feedback.style.display = 'block';
+
+        // Update score if it's the eco-friendly option
+        if (isEco === "true") {
+            ecoScore += 10;
+            ecoScoreElement.textContent = ecoScore;
+            localStorage.setItem('ecoScore', ecoScore);
+
+            // Add falling leaves animation for correct choice
+            createFallingLeaves(selectedOption);
+        }
+
+        // Mark question as answered
+        questionAnswered = true;
+
+        // Show next button if not the last question
+        if (currentQuestionIndex < questionOrder.length - 1) {
+            nextButton.style.display = 'block';
+        } else {
+            // Show results screen if it's the last question
+            setTimeout(() => {
+                showResults();
+            }, 1500);
+        }
+    }
+
+    // Show results screen
+    function showResults() {
+        // Hide current question
+        const currentSection = comparisonsContainer.children[currentQuestionIndex];
+        currentSection.style.display = 'none';
+
+        // Hide next button
+        nextButton.style.display = 'none';
+
+        // Update final score
+        finalScoreElement.textContent = ecoScore;
+
+        // Set appropriate message based on score
+        const maxScore = questionOrder.length * 10;
+        const scorePercentage = (ecoScore / maxScore) * 100;
+
+        let message, badge;
+        if (scorePercentage >= 80) {
+            message = "Excellent! You're a digital eco-warrior! Your choices show a strong commitment to sustainable digital practices.";
+            badge = "🏆";
+        } else if (scorePercentage >= 60) {
+            message = "Good job! You're making eco-conscious digital choices. With a few adjustments, you can further reduce your digital footprint.";
+            badge = "🌱";
+        } else if (scorePercentage >= 40) {
+            message = "You're on the right track! Learning about sustainable digital habits is the first step toward reducing your environmental impact.";
+            badge = "🌿";
+        } else {
+            message = "There's room for improvement in your digital habits. Check out our tips to make more eco-friendly choices!";
+            badge = "🍃";
+        }
+
+        resultsMessageElement.textContent = message;
+        resultsBadgeElement.textContent = badge;
+
+        // Show results container
+        resultsContainer.style.display = 'block';
+    }
+
+    // Move to next question
+    function nextQuestion() {
+        if (currentQuestionIndex < questionOrder.length - 1) {
+            // Hide current question
+            const currentSection = comparisonsContainer.children[currentQuestionIndex];
+            currentSection.style.display = 'none';
+
+            // Show next question
+            currentQuestionIndex++;
+            const nextSection = comparisonsContainer.children[currentQuestionIndex];
+            nextSection.style.display = 'block';
+
+            // Update progress bar
+            updateProgressBar();
+
+            // Reset state
+            questionAnswered = false;
+            nextButton.style.display = 'none';
+        }
+    }
+
+    // Restart quiz
+    function restartQuiz() {
+        // Reset score
+        ecoScore = 0;
+        ecoScoreElement.textContent = ecoScore;
+        localStorage.setItem('ecoScore', ecoScore);
+
+        // Reset question index
+        currentQuestionIndex = 0;
+        questionAnswered = false;
+
+        // Hide results container
+        resultsContainer.style.display = 'none';
+
+        // Randomize questions again
+        initializeQuestionOrder();
+
+        // Regenerate comparisons
+        generateComparisons();
+    }
+
+    // Create falling leaves animation
+    function createFallingLeaves(container) {
+        for (let i = 0; i < 5; i++) {
+            const leaf = document.createElement('div');
+            leaf.classList.add('falling-leaf');
+            leaf.textContent = '🍃';
+
+            // Random position
+            const xPos = Math.random() * container.offsetWidth;
+
+            // Set initial position
+            leaf.style.left = `${xPos}px`;
+            leaf.style.top = '0';
+
+            // Random animation duration
+            const duration = 3 + Math.random() * 2;
+            leaf.style.animationDuration = `${duration}s`;
+
+            // Add to container
+            container.appendChild(leaf);
+
+            // Remove after animation
+            setTimeout(() => {
+                leaf.remove();
+            }, duration * 1000);
+        }
+    }
+
+    // Navigation between pages
+    function setupNavigation() {
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetPage = button.getAttribute('data-page');
+
+                // Update active button
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Show target page, hide others
+                pages.forEach(page => {
+                    if (page.id === `${targetPage}-page`) {
+                        page.classList.remove('hidden');
+                    } else {
+                        page.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    }
+
+    // Initialize the application
+    function init() {
+        // Initialize randomized question order
+        initializeQuestionOrder();
+
+        // Generate comparisons
+        generateComparisons();
+
+        // Setup navigation
+        setupNavigation();
+
+        // Add event listeners to all choose buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('choose-btn')) {
+                const comparisonId = e.target.getAttribute('data-comparison');
+                const optionIndex = e.target.getAttribute('data-option');
+                const isEco = e.target.getAttribute('data-eco');
+                showFeedback(comparisonId, optionIndex, isEco);
+            }
+        });
+
+        // Add event listener for next button
+        nextButton.addEventListener('click', nextQuestion);
+
+        // Add event listeners for results screen buttons
+        restartQuizButton.addEventListener('click', restartQuiz);
+        learnMoreButton.addEventListener('click', () => {
+            // Switch to Learn More tab
+            navButtons.forEach(btn => {
+                if (btn.getAttribute('data-page') === 'education') {
+                    btn.click();
+                }
+            });
+        });
+    }
+
+    // Run initialization
+    init();
+</script>
+</body>
+</html>
